@@ -42,7 +42,7 @@ const included = ["Responsive design", "SEO setup", "Performance optimization", 
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
   { name: "Vip Food", category: "Ecommerce", code: "VF–01", highlight: "Live digital storefront" },
-  { name: "Mave Duka", category: "Web platform", code: "MD–02", highlight: "Built for modern commerce" },
+  { name: "Maveduka", category: "Web platform", code: "MD–02", highlight: "Built for modern commerce" },
 ];
 
 function StarField() {
@@ -156,7 +156,7 @@ function Navigation() {
   ];
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>MYNATECH</strong><em>.</em></a>
+      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>Mynatechsolutions</strong><em>.</em></a>
       <nav className="desktop-nav" aria-label="Main navigation">
         {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
       </nav>
