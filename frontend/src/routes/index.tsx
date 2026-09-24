@@ -1,34 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowUpRight,
+  ArrowDownRight,
+  ArrowLeft,
+  ArrowRight,
   Check,
+  ExternalLink,
   Mail,
-  MessageSquare,
-  Sparkles,
+  Menu,
+  MessageCircle,
+  Orbit,
+  Smartphone,
+  X,
 } from "lucide-react";
-
-import { useReveal } from "@/hooks/use-reveal";
-import { ServiceStack, type Service } from "@/components/site/ServiceStack";
-import heroArt from "@/assets/hero-abstract.jpg";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mynatechsolutions — Websites & Ecommerce That Grow Your Business" },
-      {
-        name: "description",
-        content:
-          "Mynatechsolutions is a web development studio building ecommerce stores, business websites, web apps and landing pages — with ongoing support after launch.",
-      },
-      {
-        property: "og:title",
-        content: "Mynatechsolutions — Websites & Ecommerce That Grow Your Business",
-      },
-      {
-        property: "og:description",
-        content:
-          "Ecommerce stores, business websites and web apps, designed and built for your brand. Custom pricing, clear timelines, support included.",
-      },
+      { title: "Mynatechsolutions | Web Development Studio" },
+      { name: "description", content: "Mynatechsolutions builds ecommerce stores, company websites, web apps, landing pages, and ongoing growth plans." },
+      { property: "og:title", content: "Mynatechsolutions | Web Development Studio" },
+      { property: "og:description", content: "Websites and digital products built to work as hard as you do." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,394 +28,232 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const SERVICES: Service[] = [
-  {
-    index: "01",
-    title: "Ecommerce Stores",
-    summary:
-      "Complete online stores with product catalogues, secure checkout, payments, shipping and order management — built to sell from day one.",
-    deliverables: ["Product catalogue", "Secure checkout", "Payment gateway", "Order dashboard"],
-    timeline: "3–6 weeks",
-  },
-  {
-    index: "02",
-    title: "Business & Company Websites",
-    summary:
-      "A fast, polished website that tells your story, builds trust and turns visitors into enquiries — on every device.",
-    deliverables: ["Custom design", "Mobile-first", "SEO basics", "Contact & enquiry forms"],
-    timeline: "2–4 weeks",
-  },
-  {
-    index: "03",
-    title: "Web Apps & Custom Platforms",
-    summary:
-      "Booking systems, dashboards, portals and tools built around how your business actually works — not the other way around.",
-    deliverables: ["User logins", "Admin dashboard", "Database", "Integrations"],
-    timeline: "4–10 weeks",
-  },
-  {
-    index: "04",
-    title: "Landing Pages & Redesigns",
-    summary:
-      "High-converting pages for campaigns and launches — or a full refresh that brings your current site up to modern standards.",
-    deliverables: ["Conversion copy layout", "Animations", "Speed optimisation", "A/B ready"],
-    timeline: "1–2 weeks",
-  },
-  {
-    index: "05",
-    title: "Care & Growth Plans",
-    summary:
-      "After launch we stay on: updates, security, backups, small changes and performance checks — so your site never goes stale.",
-    deliverables: ["Monthly updates", "Security & backups", "Priority support", "Analytics report"],
-    timeline: "Ongoing",
-  },
+const services = [
+  { name: "Ecommerce Stores" },
+  { name: "Business & Company Websites" },
+  { name: "Web Apps & Custom Platforms" },
+  { name: "Landing Pages & Redesigns" },
+  { name: "Care & Growth Plans" },
+  { name: "App Development", detail: "Built using Android Studio", icon: "android" },
+];
+const marquee = ["Ecommerce", "Business Websites", "Web Apps", "Android Apps", "Landing Pages", "Redesigns", "SEO Setup", "Maintenance", "Branding Support"];
+const process = ["Discovery call", "Proposal & price", "Design preview", "Build & launch", "Support & growth"];
+const included = ["Responsive design", "SEO setup", "Performance optimization", "Secure deployment", "Analytics setup", "Post-launch support"];
+const pricing = ["Free quote", "No lock-in", "Support plans"];
+const projects = [
+  { name: "Vip Food", category: "Ecommerce", code: "VF–01", highlight: "Live digital storefront" },
+  { name: "Mave Duka", category: "Web platform", code: "MD–02", highlight: "Built for modern commerce" },
 ];
 
-const STEPS = [
-  {
-    n: "1",
-    title: "Discovery call",
-    text: "We learn your business, your customers and what the site must achieve. Free, no obligation.",
-  },
-  {
-    n: "2",
-    title: "Proposal & price",
-    text: "You get a fixed quote and timeline for your project — every project is priced individually.",
-  },
-  {
-    n: "3",
-    title: "Design preview",
-    text: "You see and approve the design before we write production code. Revisions included.",
-  },
-  {
-    n: "4",
-    title: "Build & launch",
-    text: "We develop, test on real devices, connect your domain and take the site live.",
-  },
-  {
-    n: "5",
-    title: "Support & growth",
-    text: "Training, documentation and a care plan keep your website fast, safe and up to date.",
-  },
-];
+function StarField() {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    if (!canvas) return;
+    const context = canvas.getContext("2d");
+    if (!context) return;
+    let frame = 0;
+    let width = 0;
+    let height = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const stars = Array.from({ length: window.innerWidth < 700 ? 42 : 90 }, (_, index) => ({
+      x: (index * 83.7) % 100 / 100,
+      y: (index * 47.3) % 100 / 100,
+      size: 0.35 + (index % 4) * 0.25,
+      depth: 0.15 + (index % 7) / 10,
+    }));
+    const resize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio, 2);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    const pointer = (event: PointerEvent) => {
+      mouseX = event.clientX / width - 0.5;
+      mouseY = event.clientY / height - 0.5;
+    };
+    const draw = (time = 0) => {
+      context.clearRect(0, 0, width, height);
+      context.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--foreground");
+      stars.forEach((star) => {
+        const drift = reduced ? 0 : time * 0.000004 * star.depth;
+        const x = ((star.x + drift) % 1) * width + mouseX * star.depth * 8;
+        const y = star.y * height + mouseY * star.depth * 6;
+        context.globalAlpha = 0.12 + star.depth * 0.25;
+        context.beginPath();
+        context.arc(x, y, star.size, 0, Math.PI * 2);
+        context.fill();
+      });
+      context.globalAlpha = 1;
+      if (!reduced) frame = requestAnimationFrame(draw);
+    };
+    resize();
+    draw();
+    window.addEventListener("resize", resize);
+    window.addEventListener("pointermove", pointer, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("pointermove", pointer);
+    };
+  }, []);
+  return <canvas ref={ref} className="star-field" aria-hidden="true" />;
+}
 
-const INCLUDED = [
-  "Custom design — never an off-the-shelf template",
-  "Mobile-first, responsive on every screen size",
-  "On-page SEO and analytics set up from day one",
-  "Fast loading and performance tuned",
-  "Content managed by you — no developer needed for edits",
-  "Domain, hosting and email guidance",
-  "Launch checklist and post-launch support",
-  "Clear communication and weekly progress updates",
-];
-
-const MARQUEE_ITEMS = [
-  "Ecommerce",
-  "Business Websites",
-  "Web Apps",
-  "Landing Pages",
-  "Redesigns",
-  "SEO Setup",
-  "Maintenance",
-  "Branding Support",
-];
-
-function Index() {
-  useReveal();
-
+function BlackHole({ compact = false }: { compact?: boolean }) {
   return (
-    <div className="min-h-screen overflow-x-clip bg-background font-sans text-foreground">
-      {/* ---------------- Nav ---------------- */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a href="#top" className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary font-display text-sm font-bold text-primary-foreground">
-              M
-            </span>
-            <span className="font-display text-lg font-bold tracking-tight">
-              Myna<span className="text-primary">tech</span>solutions
-            </span>
-          </a>
-          <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
-            <a href="#services" className="transition-colors hover:text-foreground">Services</a>
-            <a href="#process" className="transition-colors hover:text-foreground">Process</a>
-            <a href="#included" className="transition-colors hover:text-foreground">What's included</a>
-            <a href="#pricing" className="transition-colors hover:text-foreground">Pricing</a>
-          </nav>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
-          >
-            Start a project
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-      </header>
+    <div className={compact ? "black-hole black-hole-compact" : "black-hole"} aria-hidden="true">
+      <div className="gravity-haze" />
+      <div className="orbit-ring orbit-ring-one"><i /></div>
+      <div className="orbit-ring orbit-ring-two"><i /></div>
+      <div className="orbit-ring orbit-ring-three"><i /></div>
+      <div className="accretion-disk" />
+      <div className="lensing lensing-top" />
+      <div className="lensing lensing-bottom" />
+      <div className="singularity" />
+    </div>
+  );
+}
 
-      {/* ---------------- Hero ---------------- */}
-      <section id="top" className="bg-grid relative pt-16">
-        <div className="glow-orb pointer-events-none absolute -top-24 right-[-10%] h-[34rem] w-[34rem] rounded-full" />
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-20 pt-16 md:grid-cols-[1.15fr_1fr] md:pt-24">
-          <div>
-            <p className="reveal inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
-              <Sparkles className="h-3.5 w-3.5" />
-              Web development studio
-            </p>
-            <h1
-              className="reveal mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-              style={{ ["--reveal-delay" as string]: "120ms" }}
-            >
-              We build websites that{" "}
-              <span className="text-primary">work as hard</span> as you do.
-            </h1>
-            <p
-              className="reveal mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
-              style={{ ["--reveal-delay" as string]: "240ms" }}
-            >
-              Mynatechsolutions designs and develops ecommerce stores, business
-              websites and custom web apps for clients who want a site that
-              looks premium and actually brings in business.
-            </p>
-            <div
-              className="reveal mt-8 flex flex-wrap items-center gap-4"
-              style={{ ["--reveal-delay" as string]: "360ms" }}
-            >
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-[var(--glow)] transition-transform hover:scale-105"
-              >
-                Get a free quote
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 font-semibold text-foreground transition-colors hover:bg-secondary"
-              >
-                See what we build
-              </a>
-            </div>
-            <dl
-              className="reveal mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-8"
-              style={{ ["--reveal-delay" as string]: "480ms" }}
-            >
-              {[
-                ["100%", "Custom built"],
-                ["5+", "Services offered"],
-                ["24h", "Reply time"],
-              ].map(([v, l]) => (
-                <div key={l}>
-                  <dt className="font-display text-3xl font-bold text-primary">{v}</dt>
-                  <dd className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{l}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry?.isIntersecting) {
+        element.dataset["visible"] = "true";
+        observer.disconnect();
+      }
+    }, { threshold: 0.12 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
+}
 
-          <div
-            className="reveal relative"
-            style={{ ["--reveal-delay" as string]: "300ms" }}
-          >
-            <div className="glow-orb pointer-events-none absolute inset-8 rounded-full" />
-            <img
-              src={heroArt}
-              alt="Abstract 3D shapes representing modern web technology"
-              width={1216}
-              height={832}
-              className="animate-pulse-soft relative rounded-3xl border border-border object-cover shadow-2xl"
-            />
-          </div>
-        </div>
-      </section>
+function SectionTitle({ number, eyebrow, title }: { number: string; eyebrow: string; title: string }) {
+  return <div className="section-title"><span>{number} / {eyebrow}</span><h2>{title}</h2></div>;
+}
 
-      {/* ---------------- Marquee ---------------- */}
-      <div className="border-y border-border bg-secondary/60 py-4">
-        <div className="flex overflow-hidden" aria-hidden="true">
-          <div className="animate-marquee flex shrink-0 items-center gap-10 pr-10">
-            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
-              <span
-                key={i}
-                className="flex items-center gap-10 whitespace-nowrap font-display text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground"
-              >
-                {item}
-                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              </span>
-            ))}
-          </div>
+function Navigation() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const nav = [
+    ["Services", "#services"], ["Process", "#process"], ["What's Included", "#included"], ["Pricing", "#pricing"],
+  ];
+  return (
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>MYNATECH</strong><em>.</em></a>
+      <nav className="desktop-nav" aria-label="Main navigation">
+        {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
+      </nav>
+      <a href="#contact" className="button button-outline nav-cta">Start a Project</a>
+      <button className="menu-toggle" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+      {open && <nav className="mobile-nav" aria-label="Mobile navigation">{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setOpen(false)}>{label}</a>)}<a href="#contact" onClick={() => setOpen(false)}>Start a Project</a></nav>}
+    </header>
+  );
+}
+
+function ProjectArchive() {
+  const [active, setActive] = useState(0);
+  const project = projects[active] ?? projects[0];
+  if (!project) return null;
+  const move = (direction: number) => setActive((value) => (value + direction + projects.length) % projects.length);
+  return (
+    <div className="project-archive">
+      <div className="project-viewport">
+        <div className="project-track" style={{ transform: `translateX(calc(-${active} * (100% + 1rem)))` }}>
+          {projects.map((item, index) => (
+            <article className={`project-card ${index === active ? "is-active" : ""}`} key={item.code} aria-hidden={index !== active}>
+              <span className="project-code">ARCHIVE {item.code}</span>
+              <div className="project-card-orbit"><span>{item.name.split(" ").map((word) => word[0]).join("")}</span></div>
+              <div className="project-card-copy">
+                <span className="eyebrow">{item.category}</span>
+                <h3>{item.name}</h3>
+                <p>{item.highlight}</p>
+                <a href="#contact" className="text-link">Visit project <ExternalLink size={15} /></a>
+              </div>
+              <span className="project-status"><i /> LIVE</span>
+            </article>
+          ))}
         </div>
       </div>
+      <div className="carousel-controls">
+        <button onClick={() => move(-1)} aria-label="Previous project"><ArrowLeft /></button>
+        <span>0{active + 1} / 0{projects.length}</span>
+        <button onClick={() => move(1)} aria-label="Next project"><ArrowRight /></button>
+      </div>
+    </div>
+  );
+}
 
-      {/* ---------------- Services: peel-off stack ---------------- */}
-      <section id="services" className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="max-w-2xl">
-          <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-            What we provide
-          </p>
-          <h2 className="reveal mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            Everything your business needs online —{" "}
-            <span className="text-stroke">peel through our services.</span>
-          </h2>
-          <p className="reveal mt-4 text-lg text-muted-foreground">
-            Scroll on — each service slides over the last. Every engagement is
-            custom-scoped, so you only pay for what you need.
-          </p>
-        </div>
-
-        <ServiceStack services={SERVICES} />
-      </section>
-
-      {/* ---------------- Process ---------------- */}
-      <section id="process" className="border-y border-border bg-card/50 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl">
-            <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-              Our stack flow
-            </p>
-            <h2 className="reveal mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-              From first call to launch — in five clear steps.
-            </h2>
+function Index() {
+  return (
+    <div id="top" className="space-site">
+      <StarField />
+      <div className="page-noise" aria-hidden="true" />
+      <Navigation />
+      <main>
+        <section className="hero section-shell">
+          <div className="hero-copy">
+            <p className="eyebrow"><span /> Web development studio</p>
+            <h1>We build websites that work as hard as you do.</h1>
+            <p className="hero-description">Ecommerce stores, business websites, web apps, landing pages, redesigns, and long-term care—engineered for real growth.</p>
+            <div className="hero-actions">
+              <a href="#contact" className="button button-primary">Start a Project <ArrowDownRight /></a>
+              <a href="#projects" className="button button-quiet">See Live Projects</a>
+            </div>
+            <div className="hero-index"><span>SCROLL TO ENTER</span><i /></div>
           </div>
+          <div className="hero-visual"><BlackHole /><span className="visual-label label-one">EVENT HORIZON / 01</span><span className="visual-label label-two">STABLE ORBIT</span></div>
+        </section>
 
-          <ol className="mt-16 grid gap-6 md:grid-cols-5">
-            {STEPS.map((step, i) => (
-              <li
-                key={step.n}
-                className="reveal group relative rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[var(--glow)]"
-                style={{ ["--reveal-delay" as string]: `${i * 120}ms` }}
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary font-display text-lg font-bold text-primary-foreground">
-                  {step.n}
-                </span>
-                <h3 className="mt-5 font-display text-lg font-bold">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {step.text}
-                </p>
-                {i < STEPS.length - 1 && (
-                  <ArrowUpRight className="absolute right-5 top-6 h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
-                )}
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+        <div className="marquee" aria-label={marquee.join(", ")}><div>{[...marquee, ...marquee].map((item, index) => <span key={`${item}-${index}`}>{item}<i /></span>)}</div></div>
 
-      {/* ---------------- What's included ---------------- */}
-      <section id="included" className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="grid items-start gap-12 md:grid-cols-2">
-          <div className="md:sticky md:top-28">
-            <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-              What every company needs
-            </p>
-            <h2 className="reveal mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Every project ships with the essentials —{" "}
-              <span className="text-primary">no hidden extras.</span>
-            </h2>
-            <p className="reveal mt-4 text-lg text-muted-foreground">
-              A website is more than pages. It's speed, search visibility,
-              security and the ability to update it yourself. That's all
-              included, always.
-            </p>
-            <a
-              href="#contact"
-              className="reveal mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition-transform hover:scale-105"
-            >
-              Ask about your project
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+        <section id="services" className="content-section section-shell">
+          <Reveal><SectionTitle number="01" eyebrow="Services" title="Six disciplines. One precise orbit." /></Reveal>
+          <div className="service-stack">
+            {services.map((service, index) => <Reveal key={service.name} className="service-reveal"><article className="service-card"><span>0{index + 1}</span><div><h3>{service.name}</h3>{service.detail && <p>{service.detail}</p>}</div>{service.icon === "android" ? <Smartphone /> : <Orbit />}<i className="card-orbit" /></article></Reveal>)}
           </div>
+        </section>
 
-          <ul className="grid gap-3">
-            {INCLUDED.map((item, i) => (
-              <li
-                key={item}
-                className="reveal flex items-start gap-3 rounded-2xl border border-border bg-card px-5 py-4"
-                style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
-              >
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15">
-                  <Check className="h-3.5 w-3.5 text-primary" />
-                </span>
-                <span className="text-sm font-medium leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        <section id="projects" className="content-section archive-section">
+          <div className="section-shell"><Reveal><SectionTitle number="02" eyebrow="Live Projects" title="Work already in orbit." /></Reveal><Reveal><ProjectArchive /></Reveal></div>
+        </section>
 
-      {/* ---------------- Pricing ---------------- */}
-      <section id="pricing" className="border-y border-border bg-card/50 py-24 md:py-32">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <p className="reveal text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-            Pricing
-          </p>
-          <h2 className="reveal mt-4 font-display text-4xl font-bold tracking-tight md:text-5xl">
-            No fixed packages.{" "}
-            <span className="text-primary">Fair, per-project pricing.</span>
-          </h2>
-          <p className="reveal mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Our prices aren't fixed on a menu — every business is different.
-            Tell us what you need and we'll send a clear, itemised quote with
-            a timeline. The discovery call and quote are always free.
-          </p>
-          <div className="reveal mx-auto mt-10 grid max-w-2xl gap-4 text-left sm:grid-cols-3">
-            {[
-              ["Free quote", "Priced to your exact scope"],
-              ["No lock-in", "You own your site & content"],
-              ["Support plans", "Optional monthly care"],
-            ].map(([t, d]) => (
-              <div key={t} className="rounded-2xl border border-border bg-background p-5">
-                <p className="font-display font-bold text-primary">{t}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        <section id="process" className="content-section section-shell">
+          <Reveal><SectionTitle number="03" eyebrow="Process" title="A clear path from signal to launch." /></Reveal>
+          <Reveal className="process-orbit"><div className="process-line" />{process.map((step, index) => <article key={step}><div className="process-node"><i /></div><span>0{index + 1}</span><h3>{step}</h3></article>)}</Reveal>
+        </section>
 
-      {/* ---------------- Contact / CTA ---------------- */}
-      <section id="contact" className="relative py-24 md:py-32">
-        <div className="glow-orb pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full" />
-        <div className="reveal relative mx-auto max-w-4xl rounded-3xl border border-primary/25 bg-card px-6 py-16 text-center shadow-[var(--glow)] md:px-16 md:py-20">
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
-            Let's build your website.
-          </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-            Tell us about your business and what you want your website to do.
-            We'll reply within 24 hours with ideas and a free quote.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="mailto:hello@mynatechsolutions.com?subject=New%20website%20project"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground transition-transform hover:scale-105"
-            >
-              <Mail className="h-4 w-4" />
-              info@mynatechsolutions.com
-            </a>
-            <a
-              href="https://wa.me/7799229494?text=Hi%20Mynatechsolutions%2C%20I%20need%20a%20website"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 font-semibold transition-colors hover:bg-secondary"
-            >
-              <MessageSquare className="h-4 w-4" />
-              Chat on WhatsApp
-            </a>
-          </div>
-          <p className="mt-6 text-xs text-muted-foreground">
-          
-          </p>
-        </div>
-      </section>
+        <section id="included" className="content-section included-section">
+          <div className="section-shell included-grid"><Reveal><SectionTitle number="04" eyebrow="What's Included" title="The essential systems, already accounted for." /></Reveal><div className="included-list">{included.map((item) => <Reveal key={item}><div className="included-item"><span><Check /></span><p>{item}</p><small>SYSTEM READY</small></div></Reveal>)}</div></div>
+        </section>
 
-      {/* ---------------- Footer ---------------- */}
-      <footer className="border-t border-border py-10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground md:flex-row">
-          <p className="font-display font-bold text-foreground">
-            Myna<span className="text-primary">tech</span>solutions
-          </p>
-          <p>Websites · Ecommerce · Web apps · Support</p>
-          <p>© {new Date().getFullYear()} Mynatechsolutions. All rights reserved.</p>
-        </div>
-      </footer>
+        <section id="pricing" className="content-section section-shell">
+          <Reveal><SectionTitle number="05" eyebrow="Pricing" title="No fixed packages. Fair, per-project pricing." /></Reveal>
+          <Reveal><div className="pricing-deck"><div className="pricing-core"><span>PROJECT PRICING</span><strong>Built around your scope.</strong><p>Clear recommendations before the build begins.</p><a href="#contact" className="button button-primary">Request a quote <ArrowRight /></a></div><div className="pricing-grid">{pricing.map((item, index) => <article className="price-module" key={item}><span>0{index + 1}</span><div className="module-signal"><i /><i /><i /></div><h3>{item}</h3><Check /></article>)}</div></div></Reveal>
+        </section>
+
+        <section id="contact" className="contact-section section-shell">
+          <BlackHole compact />
+          <Reveal className="contact-content"><p className="eyebrow"><span /> Communication gateway</p><h2>Ready to start your project?</h2><p>Tell us what you’re building. We’ll help you find the clearest path forward.</p><div className="contact-actions"><a href="mailto:" className="button button-primary"><Mail /> Email us</a><a href="https://wa.me/" className="button button-outline"><MessageCircle /> WhatsApp</a></div><small>Your project details stay private.</small></Reveal>
+        </section>
+      </main>
+      <footer><div className="section-shell footer-inner"><a href="#top" className="brand"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>MYNATECH</strong><em>.</em></a><p>Web development studio</p><a href="#top" className="back-top">Back to top <ArrowRight /></a></div></footer>
     </div>
   );
 }
