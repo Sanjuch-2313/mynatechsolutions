@@ -399,7 +399,7 @@ function Index() {
               hello@mynatechsolutions.com
             </a>
             <a
-              href="https://wa.me/910000000000?text=Hi%20Mynatechsolutions%2C%20I%20need%20a%20website"
+              href="https://wa.me/7799229494?text=Hi%20Mynatechsolutions%2C%20I%20need%20a%20website"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 font-semibold transition-colors hover:bg-secondary"
