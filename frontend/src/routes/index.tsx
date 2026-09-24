@@ -396,7 +396,7 @@ function Index() {
               className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-semibold text-primary-foreground transition-transform hover:scale-105"
             >
               <Mail className="h-4 w-4" />
-              hello@mynatechsolutions.com
+              info@mynatechsolutions.com
             </a>
             <a
               href="https://wa.me/7799229494?text=Hi%20Mynatechsolutions%2C%20I%20need%20a%20website"
@@ -409,7 +409,7 @@ function Index() {
             </a>
           </div>
           <p className="mt-6 text-xs text-muted-foreground">
-            Replace these placeholder contacts with your real email and WhatsApp number.
+          
           </p>
         </div>
       </section>
