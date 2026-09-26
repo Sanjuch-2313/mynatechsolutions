@@ -45,8 +45,8 @@ const process = ["Discovery call", "Proposal & price", "Design preview", "Build 
 const included = ["Responsive design", "SEO setup", "Performance optimization", "Secure deployment", "Analytics setup", "Post-launch support"];
 const team = [
   { name: "Syam C", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
-  { name: "Ramesh", role: "UI / UX Designer", qualification: "B.Des, Communication Design", photo: teamTwo },
-  { name: "Sanju C", role: "Full-Stack Developer", qualification: "B.Tech, Computer Science Engineering", photo: teamThree },
+  { name: "Sanju C", role: "Full-Stack Developer", qualification: "B.Tech, Computer Science Engineering", photo: teamTwo },
+  { name: "Ramesh", role: "UI / UX Designer", qualification: "B.Des, Communication Design", photo: teamThree },
   { name: "Ananya Iyer", role: "App Developer", qualification: "B.Sc, Information Technology", photo: teamFour },
 ];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
