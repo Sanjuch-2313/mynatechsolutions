@@ -166,14 +166,60 @@ function Navigation() {
   ];
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>Mynatechsolutions</strong><em>.</em></a>
-      <nav className="desktop-nav" aria-label="Main navigation">
-        {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
-      </nav>
-      <a href="#contact" className="button button-outline nav-cta">Start a Project</a>
-      <button className="menu-toggle" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
-      {open && <nav className="mobile-nav" aria-label="Mobile navigation">{nav.map(([label, href]) => <a key={label} href={href} onClick={() => setOpen(false)}>{label}</a>)}<a href="#contact" onClick={() => setOpen(false)}>Start a Project</a></nav>}
-    </header>
+  <a
+    href="#top"
+    className="brand"
+    aria-label="Mynatechsolutions home"
+  >
+    <video
+      className="brand-video"
+      src="/videos/mynavideo.mp4"
+      autoPlay
+      muted
+      loop
+      playsInline
+    />
+  </a>
+
+  <nav className="desktop-nav" aria-label="Main navigation">
+    {nav.map(([label, href]) => (
+      <a key={label} href={href}>
+        {label}
+      </a>
+    ))}
+  </nav>
+
+  <a href="#contact" className="button button-outline nav-cta">
+    Start a Project
+  </a>
+
+  <button
+    className="menu-toggle"
+    aria-label={open ? "Close menu" : "Open menu"}
+    aria-expanded={open}
+    onClick={() => setOpen(!open)}
+  >
+    {open ? <X /> : <Menu />}
+  </button>
+
+  {open && (
+    <nav className="mobile-nav" aria-label="Mobile navigation">
+      {nav.map(([label, href]) => (
+        <a
+          key={label}
+          href={href}
+          onClick={() => setOpen(false)}
+        >
+          {label}
+        </a>
+      ))}
+
+      <a href="#contact" onClick={() => setOpen(false)}>
+        Start a Project
+      </a>
+    </nav>
+  )}
+</header>
   );
 }
 
