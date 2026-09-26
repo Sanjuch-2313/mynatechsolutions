@@ -13,6 +13,10 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import teamOne from "@/assets/team-1.jpg";
+import teamTwo from "@/assets/team-2.jpg";
+import teamThree from "@/assets/team-3.jpg";
+import teamFour from "@/assets/team-4.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,9 +43,15 @@ const services = [
 const marquee = ["Ecommerce", "Business Websites", "Web Apps", "Android Apps", "Landing Pages", "Redesigns", "SEO Setup", "Maintenance", "Branding Support"];
 const process = ["Discovery call", "Proposal & price", "Design preview", "Build & launch", "Support & growth"];
 const included = ["Responsive design", "SEO setup", "Performance optimization", "Secure deployment", "Analytics setup", "Post-launch support"];
+const team = [
+  { name: "Syam C", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
+  { name: "Ramesh", role: "UI / UX Designer", qualification: "B.Des, Communication Design", photo: teamTwo },
+  { name: "Sanju C", role: "Full-Stack Developer", qualification: "B.Tech, Computer Science Engineering", photo: teamThree },
+  { name: "Ananya Iyer", role: "App Developer", qualification: "B.Sc, Information Technology", photo: teamFour },
+];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
-  { name: "Vip Food", category: "Ecommerce", code: "VF–01", highlight: "Live digital storefront" },
+  { name: "VipFood", category: "Ecommerce", code: "VF–01", highlight: "Live digital storefront" },
   { name: "Maveduka", category: "Web platform", code: "MD–02", highlight: "Built for modern commerce" },
 ];
 
@@ -152,11 +162,11 @@ function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   const nav = [
-    ["Services", "#services"], ["Process", "#process"], ["What's Included", "#included"], ["Pricing", "#pricing"],
+    ["Services", "#services"], ["Process", "#process"], ["What's Included", "#included"], ["Team", "#team"], ["Pricing", "#pricing"],
   ];
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>Mynatechsolutions</strong><em>.</em></a>
+      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>MYNATECH</strong><em>.</em></a>
       <nav className="desktop-nav" aria-label="Main navigation">
         {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
       </nav>
@@ -243,17 +253,38 @@ function Index() {
           <div className="section-shell included-grid"><Reveal><SectionTitle number="04" eyebrow="What's Included" title="The essential systems, already accounted for." /></Reveal><div className="included-list">{included.map((item) => <Reveal key={item}><div className="included-item"><span><Check /></span><p>{item}</p><small>SYSTEM READY</small></div></Reveal>)}</div></div>
         </section>
 
+        <section id="team" className="content-section section-shell">
+          <Reveal><SectionTitle number="05" eyebrow="Team" title="Meet our expert development team." /></Reveal>
+          <div className="team-grid">
+            {team.map((member) => (
+              <Reveal key={member.name}>
+                <article className="team-card">
+                  <div className="team-photo-wrap">
+                    <img src={member.photo} alt={`${member.name}, ${member.role}`} width={768} height={1024} loading="lazy" />
+                    <span className="team-ring" aria-hidden="true" />
+                  </div>
+                  <div className="team-copy">
+                    <h3>{member.name}</h3>
+                    <p className="team-qualification">{member.qualification}</p>
+                    <span className="team-role"><i /> {member.role}</span>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
         <section id="pricing" className="content-section section-shell">
-          <Reveal><SectionTitle number="05" eyebrow="Pricing" title="No fixed packages. Fair, per-project pricing." /></Reveal>
+          <Reveal><SectionTitle number="06" eyebrow="Pricing" title="No fixed packages. Fair, per-project pricing." /></Reveal>
           <Reveal><div className="pricing-deck"><div className="pricing-core"><span>PROJECT PRICING</span><strong>Built around your scope.</strong><p>Clear recommendations before the build begins.</p><a href="#contact" className="button button-primary">Request a quote <ArrowRight /></a></div><div className="pricing-grid">{pricing.map((item, index) => <article className="price-module" key={item}><span>0{index + 1}</span><div className="module-signal"><i /><i /><i /></div><h3>{item}</h3><Check /></article>)}</div></div></Reveal>
         </section>
 
         <section id="contact" className="contact-section section-shell">
           <BlackHole compact />
-          <Reveal className="contact-content"><p className="eyebrow"><span /> Communication gateway</p><h2>Ready to start your project?</h2><p>Tell us what you’re building. We’ll help you find the clearest path forward.</p><div className="contact-actions"><a href="mailto:info@mynatechsolutions.com" className="button button-primary"><Mail /> Email us</a><a href="https://wa.me/917799229494?text=Hi%20Mynatechsolutions%2C%20I%20need%20a%20website" className="button button-outline"><MessageCircle /> WhatsApp</a></div><small>Your project details stay private.</small></Reveal>
+          <Reveal className="contact-content"><p className="eyebrow"><span /> Communication gateway</p><h2>Ready to start your project?</h2><p>Tell us what you’re building. We’ll help you find the clearest path forward.</p><div className="contact-actions"><a href="mailto:info@mynatechsolutions.com" className="button button-primary"><Mail /> Email us</a><a href="https://wa.me/7799229494" className="button button-outline"><MessageCircle /> WhatsApp</a></div><small>Your project details stay private.</small></Reveal>
         </section>
       </main>
-      <footer><div className="section-shell footer-inner"><a href="#top" className="brand"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>©2026 Mynatechsolution Under the Copyright Act, 1957, software is protected as a literary work, meaning source code, object code, and user manuals receive legal protection the moment they are written</strong><em>.</em></a><p>Web development studio designed and Developed by Syam C & Sanju Choppara</p><a href="#top" className="back-top">Back to top <ArrowRight /></a></div></footer>
+      <footer><div className="section-shell footer-inner"><a href="#top" className="brand"><span className="brand-orbit" aria-hidden="true"><i /></span><strong> ©2026 Mynatechsolution Under the Copyright Act, 1957, software is protected as a literary work, meaning source code, object code, and user manuals receive legal protection the moment they are written</strong><em>.</em></a><p>Web development studio designed and Developed by Syam C & Sanju Choppara</p><a href="#top" className="back-top">Back to top <ArrowRight /></a></div></footer>
     </div>
   );
 }
