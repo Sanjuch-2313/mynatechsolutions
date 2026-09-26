@@ -166,7 +166,7 @@ function Navigation() {
   ];
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>MYNATECH</strong><em>.</em></a>
+      <a href="#top" className="brand" aria-label="Mynatechsolutions home"><span className="brand-orbit" aria-hidden="true"><i /></span><strong>Mynatechsolutions</strong><em>.</em></a>
       <nav className="desktop-nav" aria-label="Main navigation">
         {nav.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
       </nav>
