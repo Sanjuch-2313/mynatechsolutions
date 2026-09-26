@@ -173,7 +173,7 @@ function Navigation() {
   >
     <video
       className="brand-video"
-      src="/videos/mynavideo.mp4"
+      src="/assets/mynavideo.mp4"
       autoPlay
       muted
       loop
