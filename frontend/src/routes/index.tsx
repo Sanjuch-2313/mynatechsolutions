@@ -331,16 +331,40 @@ function Index() {
           <Reveal className="contact-content"><p className="eyebrow"><span /> Communication gateway</p><h2>Ready to start your project?</h2><p>Tell us what you’re building. We’ll help you find the clearest path forward.</p><div className="contact-actions"><a href="mailto:info@mynatechsolutions.com" className="button button-primary"><Mail /> Email us</a><a href="https://wa.me/7799229494" className="button button-outline"><MessageCircle /> WhatsApp</a></div><small>Your project details stay private.</small></Reveal>
         </section>
       </main>
-      <footer><div className="section-shell footer-inner"><a href="#top" className="brand"><span" aria-hidden="true">
+      <footer>
+  <div className="section-shell footer-inner">
+
+    <a href="#top" className="brand">
+      <span className="footer-video" aria-hidden="true">
         <video
-  className="brand-video"
-  src={mynavVideo}
-  autoPlay
-  muted
-  loop
-  playsInline
-/></span>
-        <strong> ©2026 Mynatechsolution Under the Copyright Act, 1957, software is protected as a literary work, meaning source code, object code, and user manuals receive legal protection the moment they are written</strong><em>.</em></a><p>Web development studio designed and Developed by Syam C & Sanju Choppara</p><a href="#top" className="back-top">Back to top <ArrowRight /></a></div></footer>
+          className="brand-video"
+          src={mynavVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </span>
+
+      <strong>
+        ©2026 Mynatechsolution Under the Copyright Act, 1957, software is
+        protected as a literary work, meaning source code, object code, and
+        user manuals receive legal protection the moment they are written
+      </strong>
+
+      <em>.</em>
+    </a>
+
+    <p>
+      Web development studio designed and Developed by Syam C & Sanju Choppara
+    </p>
+
+    <a href="#top" className="back-top">
+      Back to top <ArrowRight />
+    </a>
+
+  </div>
+</footer>
     </div>
   );
 }
