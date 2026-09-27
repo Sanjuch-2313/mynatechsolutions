@@ -275,9 +275,9 @@ function Index() {
           <div className="hero-copy">
             <p className="eyebrow"><span /> Web development studio</p>
             <h1 className="myna-hero-title">
-  <span>Your vision.</span>
-  <span>Our technology.</span>
-  <span>Your growth.</span>
+  <span>Your Vision.</span>
+  <span>Our Technology.</span>
+  <span>Your Growth.</span>
 </h1>
             <p className="hero-description">Ecommerce stores, business websites, web apps, landing pages, redesigns, and long-term care—engineered for real growth.</p>
             <div className="hero-actions">
