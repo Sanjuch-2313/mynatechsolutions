@@ -274,7 +274,11 @@ function Index() {
         <section className="hero section-shell">
           <div className="hero-copy">
             <p className="eyebrow"><span /> Web development studio</p>
-            <h1>Your vision. Our technology. Your growth.</h1>
+            <h1 className="myna-hero-title">
+  <span>Your vision.</span>
+  <span>Our technology.</span>
+  <span>Your growth.</span>
+</h1>
             <p className="hero-description">Ecommerce stores, business websites, web apps, landing pages, redesigns, and long-term care—engineered for real growth.</p>
             <div className="hero-actions">
               <a href="#contact" className="button button-primary">Start a Project <ArrowDownRight /></a>
