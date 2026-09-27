@@ -338,7 +338,7 @@ function Index() {
       <span className="footer-video" aria-hidden="true">
         <video
           className="brand-video"
-          src={mynavVideo}
+          src={mynavideo}
           autoPlay
           muted
           loop
