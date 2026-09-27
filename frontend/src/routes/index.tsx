@@ -52,7 +52,7 @@ const team = [
 ];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
-  { name: "VipFood", category: "Ecommerce", code: "VF–01",url: "https://vipfood.in" highlight: "Live digital storefront" },
+  { name: "VipFood", category: "Ecommerce", code: "VF–01",url: "https://vipfood.in", highlight: "Live digital storefront" },
   { name: "Maveduka", category: "Web platform", code: "MD–02", url: "https://maveduka.com",highlight: "Built for modern commerce" },
 ];
 
