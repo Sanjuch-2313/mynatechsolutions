@@ -45,10 +45,10 @@ const marquee = ["Ecommerce", "Business Websites", "Web Apps", "Android Apps", "
 const process = ["Discovery call", "Proposal & price", "Design preview", "Build & launch", "Support & growth"];
 const included = ["Responsive design", "SEO setup", "Performance optimization", "Secure deployment", "Analytics setup", "Post-launch support"];
 const team = [
-  { name: "Syam C", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
-  { name: "Sanju C", role: "Full-Stack Developer", qualification: "B.Tech, Computer Science Engineering", photo: teamTwo },
-  { name: "Sasi", role: "UI / UX Designer", qualification: "B.Tech EEE", photo: teamThree },
-  { name: "Ravi", role: "App Developer", qualification: "B.Tech,Computer Science Engineering ", photo: teamFour },
+  { name: "Syam ", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
+  { name: "Sanju ", role: "Full-Stack Developer", qualification: "B.Tech ", photo: teamTwo },
+  { name: "Sasi", role: "UI / UX Designer", qualification: "B.Tech", photo: teamThree },
+  { name: "Ravi", role: "App Developer", qualification: "B.Tech ", photo: teamFour },
 ];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
