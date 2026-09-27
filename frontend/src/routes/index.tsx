@@ -356,7 +356,7 @@ function Index() {
     </a>
 
     <p>
-      Web development studio designed and Developed by Syam C & Sanju Choppara
+      Web development studio designed and Developed by Syam & Sanju 
     </p>
 
     <a href="#top" className="back-top">
