@@ -81,11 +81,34 @@ main, footer { position: relative; z-index: 1; }
 .brand-orbit::before { content: ""; position: absolute; inset: 6px -3px; border: 1px solid color-mix(in oklab, var(--cyan) 60%, transparent); border-radius: 50%; transform: rotate(-28deg); animation: orbit 7s linear infinite; }
 .brand-orbit i { width: 12px; height: 12px; border-radius: 50%; background: var(--space-black); box-shadow: 0 0 9px 2px var(--space-black), 0 0 10px color-mix(in oklab, var(--cyan) 42%, transparent); }
 .brand-video {
-  width: 170px;
-  height: 42px;
+  width: clamp(120px, 11vw, 170px);
+  height: clamp(32px, 3vw, 42px);
   object-fit: cover;
   display: block;
+  border: none;
+  outline: none;
   border-radius: 0;
+
+  /* Blend the edges into your existing dark theme */
+  background: var(--space-black);
+  mix-blend-mode: screen;
+
+  /* Softly fade the edges */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 .desktop-nav { display: flex; gap: 2rem; color: var(--muted-foreground); font-size: .8rem; }
 .desktop-nav a { position: relative; transition: color .25s; }
