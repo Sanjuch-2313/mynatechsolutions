@@ -17,6 +17,7 @@ import teamOne from "@/assets/team-1.jpg";
 import teamTwo from "@/assets/team-2.jpg";
 import teamThree from "@/assets/team-3.jpg";
 import teamFour from "@/assets/team-4.jpg";
+import mynavVideo from "../assets/mynavideo.mp4";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -172,13 +173,13 @@ function Navigation() {
     aria-label="Mynatechsolutions home"
   >
     <video
-      className="brand-video"
-      src="/assets/mynavideo.mp4"
-      autoPlay
-      muted
-      loop
-      playsInline
-    />
+  className="brand-video"
+  src={mynavVideo}
+  autoPlay
+  muted
+  loop
+  playsInline
+/>
   </a>
 
   <nav className="desktop-nav" aria-label="Main navigation">
