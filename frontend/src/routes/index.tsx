@@ -339,7 +339,16 @@ function Index() {
 
         <section id="contact" className="contact-section section-shell">
           <BlackHole compact />
-          <Reveal className="contact-content"><p className="eyebrow"><span /> Communication gateway</p><h2>Ready to start your project?</h2><p>Tell us what you’re building. We’ll help you find the clearest path forward.</p><div className="contact-actions"><a href="mailto:info@mynatechsolutions.com" className="button button-primary"><Mail /> Email us</a><a href="https://wa.me/7799229494" className="button button-outline"><MessageCircle /> WhatsApp</a></div><small>Your project details stay private.</small></Reveal>
+          <Reveal className="contact-content"><p className="eyebrow"><span /> Communication gateway</p><h2>Ready to start your project?</h2><p>Tell us what you’re building. We’ll help you find the clearest path forward.</p><div className="contact-actions"><a href="mailto:info@mynatechsolutions.com" className="button button-primary"><Mail /> Email us</a>
+            <a href={`https://wa.me/7799229494?text=${encodeURIComponent(
+    "Hi Mynatechsolutions! I'm interested in building a website/web app for my business. I'd like to discuss my requirements, pricing, and project timeline."
+  )}`}
+  className="button button-outline"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <MessageCircle /> WhatsApp
+</a></div><small>Your project details stay private.</small></Reveal>
         </section>
       </main>
       <footer>
