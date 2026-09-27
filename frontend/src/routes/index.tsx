@@ -45,15 +45,15 @@ const marquee = ["Ecommerce", "Business Websites", "Web Apps", "Android Apps", "
 const process = ["Discovery call", "Proposal & price", "Design preview", "Build & launch", "Support & growth"];
 const included = ["Responsive design", "SEO setup", "Performance optimization", "Secure deployment", "Analytics setup", "Post-launch support"];
 const team = [
-  { name: "Syam ", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
+  { name: "Shyam ", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
   { name: "Sanju ", role: "Full-Stack Developer", qualification: "B.Tech ", photo: teamTwo },
-  { name: "Sasi", role: "UI / UX Designer", qualification: "B.Tech", photo: teamThree },
-  { name: "Ravi", role: "App Developer", qualification: "B.Tech ", photo: teamFour },
+  { name: "Sasi Babu", role: "UI / UX Designer", qualification: "B.Tech", photo: teamThree },
+  { name: "Ravi Kiran", role: "App Developer", qualification: "B.Tech ", photo: teamFour },
 ];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
-  { name: "VipFood", category: "Ecommerce", code: "VF–01", highlight: "Live digital storefront" },
-  { name: "Maveduka", category: "Web platform", code: "MD–02", highlight: "Built for modern commerce" },
+  { name: "VipFood", category: "Ecommerce", code: "VF–01",url: "https://vipfood.in" highlight: "Live digital storefront" },
+  { name: "Maveduka", category: "Web platform", code: "MD–02", url: "https://maaveduka.com",highlight: "Built for modern commerce" },
 ];
 
 function StarField() {
@@ -241,7 +241,14 @@ function ProjectArchive() {
                 <span className="eyebrow">{item.category}</span>
                 <h3>{item.name}</h3>
                 <p>{item.highlight}</p>
-                <a href="#contact" className="text-link">Visit project <ExternalLink size={15} /></a>
+                <a
+  href={item.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-link"
+>
+  Visit project <ExternalLink size={15} />
+</a>
               </div>
               <span className="project-status"><i /> LIVE</span>
             </article>
@@ -267,7 +274,7 @@ function Index() {
         <section className="hero section-shell">
           <div className="hero-copy">
             <p className="eyebrow"><span /> Web development studio</p>
-            <h1>We build websites that work as hard as you do.</h1>
+            <h1>Your vision. Our technology. Your growth.</h1>
             <p className="hero-description">Ecommerce stores, business websites, web apps, landing pages, redesigns, and long-term care—engineered for real growth.</p>
             <div className="hero-actions">
               <a href="#contact" className="button button-primary">Start a Project <ArrowDownRight /></a>
