@@ -47,8 +47,8 @@ const included = ["Responsive design", "SEO setup", "Performance optimization", 
 const team = [
   { name: "Syam C", role: "Lead Web Developer", qualification: "M.Tech", photo: teamOne },
   { name: "Sanju C", role: "Full-Stack Developer", qualification: "B.Tech, Computer Science Engineering", photo: teamTwo },
-  { name: "Ramesh", role: "UI / UX Designer", qualification: "B.Des, Communication Design", photo: teamThree },
-  { name: "Ananya Iyer", role: "App Developer", qualification: "B.Sc, Information Technology", photo: teamFour },
+  { name: "Sasi", role: "UI / UX Designer", qualification: "B.Tech EEE", photo: teamThree },
+  { name: "Ravi", role: "App Developer", qualification: "B.Tech,Computer Science Engineering ", photo: teamFour },
 ];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
