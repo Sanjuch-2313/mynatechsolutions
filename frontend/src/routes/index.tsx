@@ -17,6 +17,10 @@ import teamOne from "@/assets/team-1.jpg";
 import teamTwo from "@/assets/team-2.jpg";
 import teamThree from "@/assets/team-3.jpg";
 import teamFour from "@/assets/team-4.jpg";
+import teamFive from "@/assets/team-5.jpg";
+import teamSix from "@/assets/team-6.jpg";
+import teamSeven from "@/assets/team-7.jpg";
+import teamEight from "@/assets/team-8.jpg";
 import mynavVideo from "../assets/mynavideo.mp4";
 
 export const Route = createFileRoute("/")({
@@ -49,6 +53,10 @@ const team = [
   { name: "Sanju ", role: "Full-Stack Developer", qualification: "B.Tech ", photo: teamTwo },
   { name: "Sasi Babu", role: "UI / UX Designer", qualification: "B.Tech", photo: teamThree },
   { name: "Ravi Kiran", role: "App Developer", qualification: "B.Tech ", photo: teamFour },
+  { name: "Ramesh Babu", role: "UI / UX Designer", qualification: "B.SC Computers ", photo: teamFive },
+  { name: "Dinesh Kumar", role: "Full-Stack Developer", qualification: "B.Tech ", photo: teamSix },
+  { name: "Sruni", role: "Frontend Developer", qualification: "B.Tech ", photo: teamSeven },
+  { name: "Anand", role: "Backend Developer", qualification: "B.Tech ", photo: teamEight },
 ];
 const pricing = ["Free quote", "No lock-in", "Support plans"];
 const projects = [
