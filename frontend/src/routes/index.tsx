@@ -54,7 +54,7 @@ const team = [
   { name: "Sasi Babu", role: "UI / UX Designer", qualification: "B.Tech", photo: teamThree },
   { name: "Ravi Kiran", role: "App Developer", qualification: "B.Tech ", photo: teamFour },
   { name: "Ramesh Babu", role: "UI / UX Designer", qualification: "B.SC Computers ", photo: teamFive },
-  { name: "Dinesh Kumar", role: "Full-Stack Developer", qualification: "B.Tech ", photo: teamSix },
+  { name: "Dhanush Kumar", role: "Full-Stack Developer", qualification: "B.Tech ", photo: teamSix },
   { name: "Sruni", role: "Frontend Developer", qualification: "B.Tech ", photo: teamSeven },
   { name: "Anand", role: "Backend Developer", qualification: "B.Tech ", photo: teamEight },
 ];
